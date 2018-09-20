@@ -2,6 +2,7 @@ import urllib2
 import zipfile
 import shutil
 import copy
+import json
 
 from PIL import Image
 
@@ -126,7 +127,7 @@ def make_seq_configs(loadSeqs):
                     + 'check if config.py\'s DOWNLOAD_SEQS is True'
                 sys.exit(1)
 
-        imgfiles = os.listdir(imgSrc)
+        imgfiles = sorted(os.listdir(imgSrc))
         imgfiles = [x for x in imgfiles if x.split('.')[1] in ['jpg', 'png']]
         nz, ext, startFrame, endFrame = get_format(name, imgfiles)
         
